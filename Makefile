@@ -1,4 +1,6 @@
 JAR=target/nbe-0.1.0.jar
+MVN=mvn
+MVN_OPTS=-q -T 2C --offline -DskipTests
 
 default: run
 
@@ -10,7 +12,7 @@ clean:
 .PHONY: default all run clean
 
 $(JAR): pom.xml $(wildcard src/main/java/nbe/*)
-	mvn package
+	$(MVN) $(MVN_OPTS) package
 
 run: $(JAR)
-	java -cp $(JAR) Interpreter
+	java -cp $(JAR) Expr
