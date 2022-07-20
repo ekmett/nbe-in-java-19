@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.enso</groupId>
+  <artifactId>nbe</artifactId>
+  <packaging>jar</packaging>
+  <version>0.1.0</version>
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.8.1</version>
+      <dependencies>
+        <dependency>
+          <groupId>org.frgaal</groupId>
+          <artifactId>compiler-maven-plugin</artifactId>
+          <version>19.0.0-RC1</version>
+        </dependency>
+      </dependencies>
+      <configuration>
+        <compilerId>frgaal</compilerId>
+        <source>19</source>
+        <target>11</target>
+        <compilerArgs>
+          <arg>-Xlint:deprecation</arg>
+          <arg>--enable-preview</arg> <!--only needed when using preview language features-->
+        </compilerArgs>
+      </configuration>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>3.2.0</version>
+      <configuration>
+        <archive>
+          <manifestEntries>
+            <Multi-Release>true</Multi-Release>
+          </manifestEntries>
+        </archive>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+</project>
