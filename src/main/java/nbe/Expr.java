@@ -36,9 +36,7 @@ public sealed interface Expr permits Expr.Var, Expr.Lam, Expr.App {
 
   public static void main(String args[]) {
     var I = eval(Env.make(),lam("x",var(0)));
-
     var K = eval(Env.make(),lam("x",lam("y",var(1))));
-
     var KI = nf(Env.make(I,K),app(var(1),var(0)));
     System.out.printf("%s%n",KI);	
   }
